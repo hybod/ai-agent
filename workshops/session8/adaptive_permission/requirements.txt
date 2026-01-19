@@ -1,0 +1,4 @@
+veadk-python
+veadk-python[extensions]
+google-adk
+requests>=2.26.0

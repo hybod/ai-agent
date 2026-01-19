@@ -1,0 +1,38 @@
+model:
+  # [required] for running agent
+  agent:
+    provider: openai
+    name: deepseek-v3-1-terminus
+    api_base: https://ark.cn-beijing.volces.com/api/v3/
+    api_key: 
+
+volcengine:
+  # [required] for `web_search` tool
+  access_key: 
+  secret_key: 
+
+tool:
+  las:
+    url:  #mcp sse url
+    dataset_id:  #dataset name
+  code_sandbox:
+    url:  #mcp sse/streamable-http url
+    api_key:  #mcp api key
+  browser_sandbox:
+    url:  #mcp sse/streamable-http url
+    api_key:  #mcp api key
+
+database:
+  # [required]
+  opensearch:
+    host:  # should without `http://` or `https://` 
+    port: 9200  # default OpenSearch port
+    username: 
+    password: 
+
+logging:
+  # ERROR
+  # WARNING
+  # INFO
+  # DEBUG
+  level: DEBUG

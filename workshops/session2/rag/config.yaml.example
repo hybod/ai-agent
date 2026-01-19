@@ -1,0 +1,32 @@
+model:
+  # [required] for running agent
+  agent:
+    provider: openai
+    name: deepseek-v3-1-terminus
+    api_base: https://ark.cn-beijing.volces.com/api/v3/
+    api_key: 
+
+volcengine:
+  # [required] for Viking DB
+  access_key: 
+  secret_key: 
+
+database:
+  # [required] for opensearch rag
+  opensearch:
+    host:  # should without `http://` or `https://` 
+    port: 9200  # default OpenSearch port
+    username: 
+    password: 
+  # [required] for viking rag, for uploading files to tos bucket and then upload to Viking DB
+  tos:
+    endpoint: tos-cn-beijing.volces.com # default Volcengine TOS endpoint
+    region: cn-beijing                  # default Volcengine TOS region
+    bucket:  # <-- if you face "Bucket xxxx already exists, no need to create", but 403 error when uploading files, please check use another tos bucket name
+
+logging:
+  # ERROR
+  # WARNING
+  # INFO
+  # DEBUG
+  level: DEBUG

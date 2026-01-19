@@ -1,0 +1,15 @@
+[project]
+name = "session2"
+version = "0.1.0"
+description = "Workshop session 2"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "tos",
+    "veadk-python>=0.2.20",
+]
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+]

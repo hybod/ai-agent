@@ -1,0 +1,4 @@
+veadk-python
+veadk-python[extensions]
+google-adk
+agentkit-sdk-python

@@ -1,0 +1,38 @@
+common:
+  agent_name: scenic_area_agent
+  entry_point: agent.py
+  description: AgentKit project simple_agent - Basic Agent App
+  language: Python
+  language_version: '3.12'
+  agent_type: Basic App
+  dependencies_file: requirements.txt
+  runtime_envs:
+    MODEL_AGENT_API_KEY: 
+    DATABASE_VIKING_COLLECTION: saa_agent
+    DATABASE_VIKINGMEM_COLLECTION: saa_mem
+    DATABASE_TOS_BUCKET: saa-tos
+    DATABASE_TOS_REGION: cn-beijing
+  launch_type: cloud
+launch_types:
+  cloud:
+    region: cn-beijing
+    image_tag: '{{timestamp}}'
+    cr_instance_name: Auto
+    cr_namespace_name: agentkit
+    cr_repo_name: simple_agent
+    cr_auto_create_instance_type: Micro
+    cr_image_full_url: agentkit-platform-2100176348-cn-beijing.cr.volces.com/agentkit/simple_agent:20260116224536
+    build_timeout: 3600
+    cp_workspace_name: agentkit-cli-workspace
+    cp_pipeline_name: scenic_area_agent-ucge4rut
+    cp_pipeline_id: 9c7c92d5c45646a0ae4527ae9ec9e8d4
+    runtime_id: r-yednzyregw54ppxtvs3f
+    runtime_name: scenic_area_agent-ucge4rut
+    runtime_role_name: AgentKit-Runtime-Default-ServiceRole-l2k5kyn
+    runtime_auth_type: key_auth
+    runtime_apikey_name: API-KEY-xm3f9ztn
+    runtime_apikey: 
+    runtime_jwt_allowed_clients: []
+    runtime_endpoint: https://sd5l4vg3al76cj6r9uti0.apigateway-cn-beijing.volceapi.com
+docker_build:
+  platform: auto

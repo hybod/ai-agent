@@ -1,0 +1,1 @@
+veadk deploy --vefaas-app-name=session4 --veapig-instance-name=

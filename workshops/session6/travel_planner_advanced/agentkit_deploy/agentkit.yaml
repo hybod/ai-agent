@@ -1,0 +1,30 @@
+common:
+  agent_name: travel_planner_advanced
+  entry_point: agent.py
+  description: travel planner
+  language: Python
+  agent_type: Basic App
+  language_version: '3.12'
+  dependencies_file: requirements.txt
+  runtime_envs:
+    AGENTKIT_TOOL_ID: t-ye8kvgdszko2eybtftmp
+    TOOL_MCP_ROUTER_URL: https://sd4a8qb7k47gkoieroggg.apigateway-cn-beijing.volceapi.com/mcp
+    TOOL_MCP_ROUTER_API_KEY: N8ua2CEbL9lhjt6tsV1urc9Qg_k7YH7C4wDL
+  launch_type: cloud
+launch_types:
+  cloud:
+    region: cn-beijing
+    cr_instance_name: agentkit-cli-{{account_id}}
+    cr_namespace_name: agentkit
+    cr_repo_name: travel_planner_advanced
+    tos_bucket: aaa-bbb-ccc-ddd
+    tos_prefix: agentkit-builds
+    tos_region: cn-beijing
+    tos_object_key: agentkit-builds/travel_planner_advanced_20251113_175016_9fe245d2.tar.gz
+    tos_object_url: https://aaa-bbb-ccc-ddd.tos-cn-beijing.volces.com/agentkit-builds/travel_planner_advanced_20251113_175016_9fe245d2.tar.gz
+    image_tag: '{{timestamp}}'
+    cr_region: cn-beijing
+    cr_image_full_url: agentkit-cli-2100000825-cn-beijing.cr.volces.com/agentkit/travel_planner_advanced:20251113175016
+    build_timeout: 3600
+    cp_workspace_name: agentkit-cli-workspace
+    

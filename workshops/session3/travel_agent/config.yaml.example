@@ -1,0 +1,32 @@
+model:
+  agent:
+    name: deepseek-v3-1-terminus
+    api_key: 
+  video:
+    name: doubao-seedance-1-0-pro-250528
+    # if you want to use different api_key, just uncomment following line and complete api_key
+    # api_key: 
+  image:
+    name: doubao-seedream-4-0-250828
+    # if you want to use different api_key, just uncomment following line and complete api_key
+    # api_key: 
+
+observability:
+  # [optional] for exporting tracing data to Volcengine CozeLoop and APMPlus platform
+  opentelemetry:
+    cozeloop:
+      endpoint: https://api.coze.cn/v1/loop/opentelemetry/v1/traces
+      api_key: <your api key>
+      service_name: <your space id> # Coze loop `space_id`
+
+volcengine:
+    # [optional] for Viking DB and `web_search` tool
+    access_key: 
+    secret_key: 
+
+logging:
+  # ERROR
+  # WARNING
+  # INFO
+  # DEBUG
+  level: DEBUG

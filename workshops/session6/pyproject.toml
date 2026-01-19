@@ -1,0 +1,12 @@
+[project]
+name = "workshops"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk @ git+https://github.com/loveyana/adk-python@2c34a09498377a16bee58cfdfc551019c379144d",
+    "veadk-python @ git+https://github.com/loveyana/veadk-python@fd8f65bc5425f40826432bdfdd97dfd6ee85653c",
+    "volcengine-python-sdk>=4.0.36", # For Volcengine API
+    "agentkit-sdk-python>=0.1.11"
+]

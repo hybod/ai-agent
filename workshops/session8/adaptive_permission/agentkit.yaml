@@ -1,0 +1,41 @@
+common:
+  agent_name: email_agent_normal
+  entry_point: simple_agent.py
+  description: email_agent_normal
+  language: Python
+  language_version: '3.12'
+  agent_type: Basic App
+  dependencies_file: requirements.txt
+  runtime_envs:
+    SERVICE_API_KEY: 8d197fdd-bf5a-46dd-b1d2-6ea35d2c80aa
+    GUARD_ENABLED: enabled
+  launch_type: local
+launch_types:
+  cloud:
+    region: cn-beijing
+    tos_bucket: agentkit-cli-{{account_id}}
+    tos_prefix: agentkit-builds
+    tos_region: cn-beijing
+    tos_object_key: agentkit-builds/email_agent_normal_20251125_200853_b698f6a9.tar.gz
+    tos_object_url: https://agentkit-cli-2113422508.tos-cn-beijing.volces.com/agentkit-builds/email_agent_normal_20251125_200853_b698f6a9.tar.gz
+    image_tag: '{{timestamp}}'
+    cr_instance_name: agentkit-cli-{{account_id}}
+    cr_namespace_name: agentkit
+    cr_repo_name: simple_agent
+    cr_region: cn-beijing
+    cr_image_full_url: agentkit-cli-2113422508-cn-beijing.cr.volces.com/agentkit/simple_agent:20251125200853
+    build_timeout: 3600
+    cp_workspace_name: agentkit-cli-workspace
+    cp_pipeline_name: email_agent_normal-opsvj5ng
+    cp_pipeline_id: e85c77e5b9d446a198cfc56bea33879f
+    runtime_id: r-ye9wd6eygwntl8dnhy3n
+    runtime_name: email_agent_normal-opsvj5ng
+    runtime_role_name: AgentKit-Runtime-Default-ServiceRole-6xcb93v
+    runtime_apikey: wr3Xn4vLIBqw2VyHMZhT-peUiMSaP9SAbClX
+    runtime_apikey_name: API-KEY-vixmis9w
+    runtime_endpoint: https://sd4ip3js25h3ksd99fu4g.apigateway-cn-beijing.volceapi.com
+    runtime_envs: {}
+    build_timestamp: '2025-11-25T20:10:34.155206'
+    deploy_timestamp: '2025-11-25T20:12:06.185503'
+docker_build:
+  regenerate_dockerfile: false

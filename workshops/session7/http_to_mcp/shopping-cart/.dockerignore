@@ -1,0 +1,9 @@
+target/classes
+target/maven-*
+target/generated-*
+target/shopping-cart-*
+!target/shopping-cart-*.war
+.git
+.idea
+*.log
+.DS_Store

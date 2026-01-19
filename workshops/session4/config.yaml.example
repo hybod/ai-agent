@@ -1,0 +1,11 @@
+model:
+  agent:
+    api_key: 
+
+# for deployment & web search
+volcengine:
+  access_key: 
+  secret_key: 
+
+# for amap mcp server
+gaode_mcp_api_key: 

@@ -1,0 +1,25 @@
+# model:
+#   agent:
+#     api_key: 
+
+# for deployment & web search
+volcengine:
+  access_key: 
+  secret_key: 
+
+# for amap mcp server
+gaode_mcp_api_key: ""
+
+# for sandbox tools
+agentkit:
+  tool_id: "your tool id"
+tool:
+  mcp_router_url: "https://sd4a8qb7k47gkoieroggg.apigateway-cn-beijing.volceapi.com/mcp"
+  mcp_router_api_key: "N8ua2CEbL9lhjt6tsV1urc9Qg_k7YH7C4wDL"
+
+database:
+ # [optional] for knowledgebase with viking database
+  tos:
+    endpoint: tos-cn-beijing.volces.com # default Volcengine TOS endpoint
+    region: cn-beijing                  # default Volcengine TOS region
+    bucket: <your bucket name>

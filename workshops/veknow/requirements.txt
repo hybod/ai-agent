@@ -1,0 +1,4 @@
+veadk-python
+requests
+pycryptodome
+lark-oapi

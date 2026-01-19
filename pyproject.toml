@@ -1,0 +1,18 @@
+name = "agent-workshop"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk>=1.17.0",
+    "veadk-python>=0.2.17",
+    "mcp>=1.13.1",
+    "a2a-sdk>=0.3.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "workshops",
+    "workshops/session1",
+    "workshops/session2",
+]

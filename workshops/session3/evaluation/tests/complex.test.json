@@ -1,0 +1,247 @@
+{
+  "eval_set_id": "complex",
+  "name": "complex",
+  "description": null,
+  "eval_cases": [
+    {
+      "eval_id": "product-order",
+      "conversation": [
+        {
+          "invocation_id": "e-be18b9c7-8318-4bf0-8660-16abff2a9b13",
+          "user_content": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "产品介绍",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "根据我们的知识库，我们产品的介绍如下：\n\n**产品介绍**\n我们的产品是市场上最好的，以其质量和可靠性而闻名。\n\n如果您想了解特定产品的详细信息，比如某个具体型号或类别的产品，请告诉我具体的产品名称或类型，我可以为您提供更详细的介绍。",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "call_4f98d6gtus8s0542ik7s9l5y",
+                "args": {
+                  "question": "产品介绍"
+                },
+                "name": "knowledge_base"
+              }
+            ],
+            "intermediate_responses": [
+              [
+                "ecommerce_customer_service_agent",
+                [
+                  {
+                    "function_call": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "我来帮您查找产品介绍相关的信息。让我从知识库中为您搜索相关信息。",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null
+                  }
+                ]
+              ]
+            ]
+          },
+          "creation_timestamp": 1762311249.345755
+        },
+        {
+          "invocation_id": "e-07f6ddd4-9f41-44d4-a12f-4456298080f2",
+          "user_content": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "价格",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "根据我们的知识库，以下是产品价格信息：\n\n**产品价格**\n- A型号售价：100美元\n- B型号售价：200美元  \n- C型号售价：300美元\n\n如果您想了解特定型号的详细价格信息，或者有关于促销、折扣、价格保护等方面的问题，请告诉我具体的产品型号，我可以为您提供更详细的信息。",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "call_bjhv25qgi62g6swcmkbypfzj",
+                "args": {
+                  "question": "价格"
+                },
+                "name": "knowledge_base"
+              }
+            ],
+            "intermediate_responses": [
+              [
+                "ecommerce_customer_service_agent",
+                [
+                  {
+                    "function_call": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "我来帮您查找价格相关的信息。让我从知识库中为您搜索相关信息。",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null
+                  }
+                ]
+              ]
+            ]
+          },
+          "creation_timestamp": 1762311257.410663
+        },
+        {
+          "invocation_id": "e-f790741f-f5bf-4c17-8e99-ea3b7e986579",
+          "user_content": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "怎么下单",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "我已经为您创建了一个客服工单（工单号：TICKET-D3798A6D），我们的客服团队会尽快联系您，为您提供详细的下单流程指导。\n\n一般来说，下单流程通常包括以下几个步骤：\n1. 选择您要购买的产品\n2. 添加到购物车\n3. 填写收货地址和联系方式\n4. 选择支付方式\n5. 确认订单并完成支付\n\n我们的客服团队会为您提供更详细和准确的操作指导。请留意我们的联系，谢谢！",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "call_5i44tht492t5x3qf5p880q5g",
+                "args": {
+                  "question": "怎么下单"
+                },
+                "name": "knowledge_base"
+              },
+              {
+                "id": "call_updaloqk283uc809trrihziz",
+                "args": {
+                  "problem_description": "客户询问如何下单购买产品，需要详细的购买流程指导"
+                },
+                "name": "create_ticket"
+              }
+            ],
+            "intermediate_responses": [
+              [
+                "ecommerce_customer_service_agent",
+                [
+                  {
+                    "function_call": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "我来帮您查找下单流程相关的信息。让我从知识库中为您搜索相关信息。",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null
+                  }
+                ]
+              ],
+              [
+                "ecommerce_customer_service_agent",
+                [
+                  {
+                    "function_call": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "看起来知识库中没有找到关于下单流程的具体信息。我来为您创建一个客服工单，这样我们的专业客服团队可以为您提供详细的下单指导。",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null
+                  }
+                ]
+              ]
+            ]
+          },
+          "creation_timestamp": 1762311265.304636
+        }
+      ],
+      "session_input": {
+        "app_name": "ecommerce_agent",
+        "user_id": "user",
+        "state": {}
+      },
+      "creation_timestamp": 1762311306.1250079
+    }
+  ],
+  "creation_timestamp": 1762311290.711433
+}

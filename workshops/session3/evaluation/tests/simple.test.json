@@ -1,0 +1,87 @@
+{
+  "eval_set_id": "simple",
+  "name": "simple",
+  "description": null,
+  "eval_cases": [
+    {
+      "eval_id": "product-price",
+      "conversation": [
+        {
+          "invocation_id": "e-f25f5edb-f75b-4aa6-ab9b-657c4b436a12",
+          "user_content": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "价格",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "根据我们的知识库，我们有以下产品的价格信息：\n\n- A型号售价：100美元\n- B型号售价：200美元  \n- C型号售价：300美元\n\n请问您是想了解哪个具体产品的价格信息呢？或者您有其他关于价格的问题吗？",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "call_u6mzq918tz8nbxfp3lehhtme",
+                "args": {
+                  "question": "价格"
+                },
+                "name": "knowledge_base"
+              }
+            ],
+            "intermediate_responses": [
+              [
+                "ecommerce_customer_service_agent",
+                [
+                  {
+                    "function_call": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "我来帮您查询价格相关的信息。让我先查看知识库中的价格相关信息。",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null
+                  }
+                ]
+              ]
+            ]
+          },
+          "creation_timestamp": 1762311132.284066
+        }
+      ],
+      "session_input": {
+        "app_name": "ecommerce_agent",
+        "user_id": "user",
+        "state": {}
+      },
+      "creation_timestamp": 1762311146.683653
+    }
+  ],
+  "creation_timestamp": 1762311123.426291
+}

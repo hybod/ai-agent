@@ -1,0 +1,298 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Shopping Cart API",
+    "version": "1.0.0",
+    "description": "E-commerce shopping cart system API"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9090/shopping-cart"
+    }
+  ],
+  "paths": {
+    "/LoginSrv": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User login",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {"type": "string"},
+                  "password": {"type": "string"},
+                  "usertype": {"type": "string", "enum": ["customer", "admin"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/RegisterSrv": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "User registration",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/LogoutSrv": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Logout",
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/AddProductSrv": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Add product",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "type": {"type": "string"},
+                  "info": {"type": "string"},
+                  "price": {"type": "number"},
+                  "quantity": {"type": "integer"},
+                  "image": {"type": "string", "format": "binary"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/UpdateProductSrv": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Update product",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pid": {"type": "string"},
+                  "name": {"type": "string"},
+                  "type": {"type": "string"},
+                  "info": {"type": "string"},
+                  "price": {"type": "number"},
+                  "quantity": {"type": "integer"},
+                  "image": {"type": "string", "format": "binary"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/RemoveProductSrv": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Remove product",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prodid": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/ListProducts": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "List products",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {"$ref": "#/components/schemas/Product"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ShowImage": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get product image",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "query",
+            "schema": {"type": "string"}
+          }
+        ],
+        "responses": {
+          "200": {"description": "Image"}
+        }
+      }
+    },
+    "/AddtoCart": {
+      "post": {
+        "tags": ["Cart"],
+        "summary": "Add to cart",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pid": {"type": "string"},
+                  "pqty": {"type": "integer"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/UpdateToCart": {
+      "post": {
+        "tags": ["Cart"],
+        "summary": "Update cart",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pid": {"type": "string"},
+                  "pqty": {"type": "integer"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/OrderServlet": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Place order",
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/ShipmentServlet": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Update shipment",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderid": {"type": "string"},
+                  "prodid": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    },
+    "/fansMessage": {
+      "post": {
+        "tags": ["Messages"],
+        "summary": "Send message",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "email": {"type": "string"},
+                  "comments": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Success"}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRegistration": {
+        "type": "object",
+        "properties": {
+          "username": {"type": "string"},
+          "email": {"type": "string"},
+          "mobile": {"type": "integer"},
+          "address": {"type": "string"},
+          "pincode": {"type": "integer"},
+          "password": {"type": "string"}
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "prodId": {"type": "string"},
+          "prodName": {"type": "string"},
+          "prodType": {"type": "string"},
+          "prodInfo": {"type": "string"},
+          "prodPrice": {"type": "number"},
+          "prodQuantity": {"type": "integer"}
+        }
+      }
+    }
+  }
+}

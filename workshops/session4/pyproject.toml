@@ -1,0 +1,12 @@
+[project]
+name = "session4"
+version = "0.1.0"
+description = "Workshop session 4"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "veadk-python>=0.2.18",
+    "uvicorn[standard]",
+    "google-adk[eval]", # if you want to use ADK Web evaluation
+    "veadk-python[eval]", # if you want to use VeADK cli evaluation
+]

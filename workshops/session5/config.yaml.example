@@ -1,0 +1,19 @@
+model:
+  agent:
+    api_key: 
+
+# for deployment & web search
+volcengine:
+  access_key: 
+  secret_key: 
+
+# for amap mcp server
+gaode_mcp_api_key: 
+
+# for sandbox tools
+agentkit:
+  tool_id: 
+tool:
+  mcp_router_url: 
+  mcp_router_api_key: 
+

@@ -1,0 +1,3 @@
+git+https://github.com/loveyana/veadk-python@workshop
+veadk-python[extensions]
+git+https://github.com/loveyana/adk-python@workshop

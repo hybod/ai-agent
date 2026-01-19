@@ -1,0 +1,3 @@
+tos>=2.8.7
+veadk-python>=0.2.18
+volcengine-python-sdk>=4.0.31

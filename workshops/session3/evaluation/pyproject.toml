@@ -1,0 +1,11 @@
+[project]
+name = "evaluation_workshop"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk<1.14.0",
+    "veadk-python>=0.2.18",
+    "veadk-python[eval]"
+]

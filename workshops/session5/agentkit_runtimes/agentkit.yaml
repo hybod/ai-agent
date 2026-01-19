@@ -1,0 +1,35 @@
+common:
+  agent_name: simple_agent
+  entry_point: simple_agent.py
+  description: AgentKit project simple_agent - Basic Stream Agent App
+  python_version: '3.12'
+  dependencies_file: requirements.txt
+  runtime_envs: {}
+  launch_type: cloud
+launch_types:
+  cloud:
+    region: cn-beijing
+    tos_bucket: aaa-bbb-ccc-ddd
+    tos_prefix: agentkit-builds
+    tos_region: cn-beijing
+    tos_object_key: agentkit-builds/simple_agent_20251106_145610_2df218cc.tar.gz
+    tos_object_url: https://aaa-bbb-ccc-ddd.tos-cn-beijing.volces.com/agentkit-builds/simple_agent_20251106_145610_2df218cc.tar.gz
+    image_tag: '{{timestamp}}'
+    cr_instance_name: agentkit-cli-{{account_id}}
+    cr_namespace_name: agentkit
+    cr_repo_name: simple_agent
+    cr_region: cn-beijing
+    cr_image_full_url: agentkit-cli-2100000825-cn-beijing.cr.volces.com/agentkit/simple_agent:20251106145610
+    build_timeout: 3600
+    cp_workspace_name: agentkit-cli-workspace
+    cp_pipeline_name: simple_agent-b3sku0dz
+    cp_pipeline_id: 9fe7a03118914fc093fbf72a61ed62d9
+    runtime_id: Auto
+    runtime_name: simple_agent-b3sku0dz
+    runtime_role_name: Auto
+    runtime_apikey: Auto
+    runtime_apikey_name: Auto
+    runtime_endpoint: ''
+    runtime_envs: {}
+    build_timestamp: '2025-11-06T14:59:58.717575'
+    deploy_timestamp: ''

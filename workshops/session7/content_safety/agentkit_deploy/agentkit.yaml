@@ -1,0 +1,25 @@
+common:
+  agent_name: content_safety_agent
+  entry_point: agent.py
+  description: content safety agent with guardrails
+  language: Python
+  agent_type: Basic App
+  language_version: '3.12'
+  dependencies_file: requirements.txt
+  runtime_envs:
+    AGENTKIT_TOOL_ID: t-ye8kvgdszko2eybtftmp
+    TOOL_LLM_SHIELD_APP_ID: app-d40r0rg2pj8ghl7r6u20
+  launch_type: cloud
+launch_types:
+  cloud:
+    region: cn-beijing
+    cr_instance_name: agentkit-cli-{{account_id}}
+    cr_namespace_name: agentkit
+    cr_repo_name: content_safety_agent
+    tos_bucket: aaa-bbb-ccc-ddd
+    tos_prefix: agentkit-builds
+    tos_region: cn-beijing
+    image_tag: '{{timestamp}}'
+    cr_region: cn-beijing
+    build_timeout: 3600
+    cp_workspace_name: agentkit-cli-workspace

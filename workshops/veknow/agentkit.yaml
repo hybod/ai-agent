@@ -1,0 +1,41 @@
+common:
+  agent_name: veknow
+  entry_point: simple_agent.py
+  description: AgentKit project simple_agent - Basic Agent App
+  language: Python
+  language_version: '3.12'
+  agent_type: Basic App
+  dependencies_file: requirements.txt
+  runtime_envs:
+    LARK_APP_ID: cli_a9ee5a4504f85cb5
+    LARK_APP_SECRET: edOQvqZpWeRSfeTXQooSogyNdcYAJg6J
+    LARK_ENCRYPT_KEY: MtjBxqaf7JQx0OzOJTQWQfyH2Pl6L4OC
+    LARK_VERIFICATION_TOKEN: CubEGr4JLxzLW78UKSkmvg6gyRMaI6Ca
+    DOCS_BASE: https://www.volcengine.com/docs
+    MODEL_AGENT_NAME: ep-20260112221629-hl7m4
+    MODEL_AGENT_API_KEY: 69fd5453-03d1-4595-b2e3-19d8beb2f6c6
+    LOG_LEVEL: info
+  launch_type: cloud
+launch_types:
+  cloud:
+    region: cn-beijing
+    image_tag: '{{timestamp}}'
+    cr_instance_name: Auto
+    cr_namespace_name: agentkit
+    cr_repo_name: simple_agent
+    cr_auto_create_instance_type: Micro
+    cr_image_full_url: agentkit-platform-2100176348-cn-beijing.cr.volces.com/agentkit/simple_agent:20260114232226
+    build_timeout: 3600
+    cp_workspace_name: agentkit-cli-workspace
+    cp_pipeline_name: veknow-jpxvtzmi
+    cp_pipeline_id: 24f521ad784b4dce85c13001b25dd49c
+    runtime_id: r-yediv1juv4o2eybtgll2
+    runtime_name: veknow-jpxvtzmi
+    runtime_role_name: AgentKit-Runtime-Default-ServiceRole-l4fz9vp
+    runtime_auth_type: key_auth
+    runtime_apikey_name: API-KEY-bv81yydx
+    runtime_apikey: J5jfKlEr3eqVdQFQmdLkI4ZewzI8DCNCHHsD
+    runtime_jwt_allowed_clients: []
+    runtime_endpoint: https://sd5jrag9itm8rf8obpki0.apigateway-cn-beijing.volceapi.com
+docker_build:
+  platform: auto

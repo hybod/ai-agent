@@ -1,0 +1,673 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Shopping Cart API",
+    "description": "A comprehensive e-commerce shopping cart system API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Shopping Cart System"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/shopping-cart",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/LoginSrv": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User login",
+        "description": "Authenticate user with username and password",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "User email address"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User password"
+                  },
+                  "usertype": {
+                    "type": "string",
+                    "enum": ["customer", "admin"],
+                    "description": "Type of user"
+                  }
+                },
+                "required": ["username", "password", "usertype"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials"
+          }
+        }
+      }
+    },
+    "/RegisterSrv": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "User registration",
+        "description": "Register a new user account",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegistration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Registration successful"
+          },
+          "400": {
+            "description": "Registration failed"
+          }
+        }
+      }
+    },
+    "/LogoutSrv": {
+      "get": {
+        "tags": ["Authentication"],
+        "summary": "User logout",
+        "description": "Logout current user session",
+        "responses": {
+          "200": {
+            "description": "Logout successful"
+          }
+        }
+      }
+    },
+    "/AddProductSrv": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Add new product",
+        "description": "Add a new product to the catalog (Admin only)",
+        "security": [{"sessionAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product added successfully"
+          },
+          "403": {
+            "description": "Access denied - Admin required"
+          }
+        }
+      }
+    },
+    "/UpdateProductSrv": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Update product",
+        "description": "Update existing product information (Admin only)",
+        "security": [{"sessionAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated successfully"
+          },
+          "403": {
+            "description": "Access denied - Admin required"
+          }
+        }
+      }
+    },
+    "/RemoveProductSrv": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Remove product",
+        "description": "Remove product from catalog (Admin only)",
+        "security": [{"sessionAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prodid": {
+                    "type": "string",
+                    "description": "Product ID to remove"
+                  }
+                },
+                "required": ["prodid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product removed successfully"
+          },
+          "403": {
+            "description": "Access denied - Admin required"
+          }
+        }
+      }
+    },
+    "/ShowImage": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get product image",
+        "description": "Retrieve product image by product ID",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Product ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product image",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Image not found"
+          }
+        }
+      }
+    },
+    "/AddtoCart": {
+      "post": {
+        "tags": ["Cart"],
+        "summary": "Add item to cart",
+        "description": "Add product to user's shopping cart, the pid is required, can use ListProducts to get pid; not need to login for agentkit",
+        "security": [{"sessionAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pid": {
+                    "type": "string",
+                    "description": "Product ID"
+                  },
+                  "pqty": {
+                    "type": "integer",
+                    "description": "Quantity to add"
+                  }
+                },
+                "required": ["pid", "pqty"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item added to cart successfully"
+          },
+          "401": {
+            "description": "User not logged in"
+          }
+        }
+      }
+    },
+    "/UpdateToCart": {
+      "post": {
+        "tags": ["Cart"],
+        "summary": "Update cart item",
+        "description": "Update quantity of item in cart, the pid is required",
+        "security": [{"sessionAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pid": {
+                    "type": "string",
+                    "description": "Product ID"
+                  },
+                  "pqty": {
+                    "type": "integer",
+                    "description": "New quantity"
+                  }
+                },
+                "required": ["pid", "pqty"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cart updated successfully"
+          },
+          "401": {
+            "description": "User not logged in"
+          }
+        }
+      }
+    },
+    "/OrderServlet": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Place order",
+        "description": "Place order for items in cart, not need to login for agentkit",
+        "security": [{"sessionAuth": []}],
+        "responses": {
+          "200": {
+            "description": "Order placed successfully"
+          },
+          "401": {
+            "description": "User not logged in"
+          }
+        }
+      }
+    },
+    "/ShipmentServlet": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Update shipment status",
+        "description": "Update order shipment status (Admin only)",
+        "security": [{"sessionAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderid": {
+                    "type": "string",
+                    "description": "Order ID"
+                  },
+                  "prodid": {
+                    "type": "string",
+                    "description": "Product ID"
+                  }
+                },
+                "required": ["orderid", "prodid"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shipment status updated"
+          },
+          "403": {
+            "description": "Access denied - Admin required"
+          }
+        }
+      }
+    },
+    "/ListProducts": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "List all products",
+        "description": "Get all products without image data",
+        "responses": {
+          "200": {
+            "description": "List of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductWithoutImage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fansMessage": {
+      "post": {
+        "tags": ["Messages"],
+        "summary": "Send fan message",
+        "description": "Send message to fans/customers",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Sender name"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Sender email"
+                  },
+                  "comments": {
+                    "type": "string",
+                    "description": "Message content"
+                  }
+                },
+                "required": ["name", "email", "comments"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message sent successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "User full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address"
+          },
+          "mobile": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Mobile phone number"
+          },
+          "address": {
+            "type": "string",
+            "description": "User address"
+          },
+          "pinCode": {
+            "type": "integer",
+            "description": "Postal code"
+          }
+        }
+      },
+      "UserRegistration": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "User full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address"
+          },
+          "mobile": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Mobile phone number"
+          },
+          "address": {
+            "type": "string",
+            "description": "User address"
+          },
+          "pincode": {
+            "type": "integer",
+            "description": "Postal code"
+          },
+          "password": {
+            "type": "string",
+            "description": "User password"
+          }
+        },
+        "required": ["username", "email", "mobile", "address", "pincode", "password"]
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "prodId": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "prodName": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "prodType": {
+            "type": "string",
+            "description": "Product category/type"
+          },
+          "prodInfo": {
+            "type": "string",
+            "description": "Product description"
+          },
+          "prodPrice": {
+            "type": "number",
+            "format": "double",
+            "description": "Product price"
+          },
+          "prodQuantity": {
+            "type": "integer",
+            "description": "Available quantity"
+          }
+        }
+      },
+      "ProductCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "type": {
+            "type": "string",
+            "description": "Product category"
+          },
+          "info": {
+            "type": "string",
+            "description": "Product description"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Product price"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Available quantity"
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "description": "Product image file"
+          }
+        },
+        "required": ["name", "type", "info", "price", "quantity"]
+      },
+      "ProductUpdate": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "type": {
+            "type": "string",
+            "description": "Product category"
+          },
+          "info": {
+            "type": "string",
+            "description": "Product description"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Product price"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Available quantity"
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "description": "Product image file"
+          }
+        },
+        "required": ["pid"]
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Transaction ID"
+          },
+          "productId": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Order quantity"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double",
+            "description": "Order amount"
+          },
+          "shipped": {
+            "type": "integer",
+            "description": "Shipment status (0=not shipped, 1=shipped)"
+          }
+        }
+      },
+      "ProductWithoutImage": {
+        "type": "object",
+        "properties": {
+          "prodId": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "prodName": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "prodType": {
+            "type": "string",
+            "description": "Product category/type"
+          },
+          "prodInfo": {
+            "type": "string",
+            "description": "Product description"
+          },
+          "prodPrice": {
+            "type": "number",
+            "format": "double",
+            "description": "Product price"
+          },
+          "prodQuantity": {
+            "type": "integer",
+            "description": "Available quantity"
+          }
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "User email"
+          },
+          "prodId": {
+            "type": "string",
+            "description": "Product ID"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity in cart"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "sessionAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "JSESSIONID",
+        "description": "Session-based authentication using HTTP sessions"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Authentication",
+      "description": "User authentication and session management"
+    },
+    {
+      "name": "Products",
+      "description": "Product catalog management"
+    },
+    {
+      "name": "Cart",
+      "description": "Shopping cart operations"
+    },
+    {
+      "name": "Orders",
+      "description": "Order processing and management"
+    },
+    {
+      "name": "Messages",
+      "description": "Customer messaging system"
+    }
+  ]
+}
